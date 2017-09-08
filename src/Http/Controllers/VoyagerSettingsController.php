@@ -88,6 +88,9 @@ class VoyagerSettingsController extends Controller
                 'details' => $setting->details,
                 'group'   => $setting->group,
             ]);
+            if($content === null ){
+                $content = $request->input(\str_replace('.','_',$setting->key));
+            }
 
             if ($content === null && isset($setting->value)) {
                 $content = $setting->value;
